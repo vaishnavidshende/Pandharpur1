@@ -2259,5 +2259,40 @@ Important Places
             ).addTo(map_c99a62e97fa40cb8b34f2c44184cd0d7);
 
         
+<style>
+    /* Responsive Map Container & Mobile Adjustments */
+    #map_c99a62e97fa40cb8b34f2c44184cd0d7 {
+        width: 100% !important;
+        height: 100vh !important;
+    }
+
+    @media (max-width: 768px) {
+        .leaflet-control-search {
+            max-width: 200px;
+        }
+        .leaflet-control-layers {
+            max-width: 180px;
+            font-size: 12px;
+        }
+        .leaflet-control-minimap {
+            display: none; /* Hide minimap on mobile to save screen space */
+        }
+    }
+</style>
+
+<!-- Add this right before your closing </script> tag -->
+<script>
+    // Mobile Optimization Helper for Leaflet Controls
+    if (window.innerWidth <= 768) {
+        // Collapse Layer Control on load for mobile
+        layer_control_0ada989451905e0614fd7f52ea276128.collapse();
+
+        // Auto-collapse search box when a location is selected on mobile
+        feature_group_a11e4246f04da63736a6a34e2c819e14searchControl.on('search:locationfound', function(e) {
+            if (typeof feature_group_a11e4246f04da63736a6a34e2c819e14searchControl.collapse === 'function') {
+                feature_group_a11e4246f04da63736a6a34e2c819e14searchControl.collapse();
+            }
+        });
+    }
 </script>
 </html>
